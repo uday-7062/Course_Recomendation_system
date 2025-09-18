@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Map with Question Search</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div id="program-selector">
+        <label for="program-dropdown">Select Program:</label>
+        <select id="program-dropdown" onchange="switchProgram()">
+            <option value="CS">BS in Computer Science</option>
+            <option value="CDS">BS in CS - Computational Data Science</option>
+            <option value="BSCS">BS in CS Specialization in Cyber Security</option>
+            <option value="SE">BA in Software Engineering</option>
+            <option value="BA">BA in Computer Science</option>
+            <option value="BACS">BA in CS Specialization in Cyber Security</option>
+        </select>
+    </div>
+    
+    <!-- CS Program (default visible) -->
+    <div id="CS-program" class="program-container">
+        <h2>BS in CS Course Map Exploration</h2>
+        <div id="legend_container">
+            <ul>
+                <li class="prereq">Course prerequisite chain</li>
+                <li class="prereq immediate">Immediate prerequisite</li>
+                <li class="prereq immediate coreq">Credit or current registration required</li>
+                <li class="coreq">Immediate postrequisite </li>
+                <li class="postreq">Postrequisite course sequence</li>
+            </ul>
+        </div>
+        <div class="table-and-question-container">
+            <div class="table_container">
+                <table id="courseTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Year 1</th>
+                            <th colspan="2">Year 2</th>
+                            <th colspan="2">Year 3</th>
+                            <th colspan="2">Year 4</th>
+                        </tr>
+                        <tr>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                        </tr>
+                        <tr>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2010" draggable="true" ondragstart="drag(event)" id="CS2010">CS 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2900" draggable="true" ondragstart="drag(event)" id="CS2900">CS 2900<br>(2 Cr.)</div>
+                                    <div class="item course" data-id="MATH1280" draggable="true" ondragstart="drag(event)" id="MATH1280">MATH 1280<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1010 & 1110" draggable="true" ondragstart="drag(event)" id="WRIT1010 & 1110">WRIT 1010 & 1110<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2020" draggable="true" ondragstart="drag(event)" id="CS2020">CS 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2190" draggable="true" ondragstart="drag(event)" id="CS2190">CS 2190<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2220" draggable="true" ondragstart="drag(event)" id="MATH2220">MATH 2220<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SPAN1010" draggable="true" ondragstart="drag(event)" id="SPAN1010">LANG 1010<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1120" draggable="true" ondragstart="drag(event)" id="WRIT1120">WRIT 1120<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3350" draggable="true" ondragstart="drag(event)" id="CS3350">CS 3350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3080" draggable="true" ondragstart="drag(event)" id="CS3080">CS 3080<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL1" draggable="true" ondragstart="drag(event)" id="NSL1">NS1 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="SPAN1020" draggable="true" ondragstart="drag(event)" id="SPAN1020">LANG 1020<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3060" draggable="true" ondragstart="drag(event)" id="CS3060">CS 3060<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SE3540" draggable="true" ondragstart="drag(event)" id="SE3540">SE 3540<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL2" draggable="true" ondragstart="drag(event)" id="NSL2">NS2 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="SPAN2010" draggable="true" ondragstart="drag(event)" id="SPAN2010">LANG 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC1"draggable="true" ondragstart="drag(event)" id="MDC1">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4120" draggable="true" ondragstart="drag(event)" id="CS4120">CS 4120<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3000" draggable="true" ondragstart="drag(event)" id="CS3000">CS 3000<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1340" draggable="true" ondragstart="drag(event)" id="MATH1340">MATH 1340<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SPAN2020" draggable="true" ondragstart="drag(event)" id="SPAN2020">LANG 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC2" draggable="true" ondragstart="drag(event)" id="MDC2">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4390" draggable="true" ondragstart="drag(event)" id="CS4390">CS 4390<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3900" draggable="true" ondragstart="drag(event)" id="CS3900">CS 3900<br>SUMMER<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1350" draggable="true" ondragstart="drag(event)" id="MATH1350">MATH 1350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4000-1" draggable="true" ondragstart="drag(event)" id="CS4000-1">CS 4000-Lv.<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC3" draggable="true" ondragstart="drag(event)" id="MDC3">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL1" draggable="true" ondragstart="drag(event)" id="SOCIAL1">SOC/BEH.SCI<br>ELECTIVE<br>(3 Cr.)</div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3000-1" draggable="true" ondragstart="drag(event)" id="CS3000-1">CS 3000-Lv.<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4000-2" draggable="true" ondragstart="drag(event)" id="CS4000-2">CS 4000-Lv.<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2470" draggable="true" ondragstart="drag(event)" id="MATH2470">MATH 2470<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL2" draggable="true" ondragstart="drag(event)" id="SOCIAL2">SOC/BEH.SCI<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC4" draggable="true" ondragstart="drag(event)" id="MDC4">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4770" draggable="true" ondragstart="drag(event)" id="CS4770">CS 4770<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4000-3" draggable="true" ondragstart="drag(event)" id="CS4000-3">CS 4000-Lv.<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH" draggable="true" ondragstart="drag(event)" id="MATH">MATH Ele<br>AFTER 1280<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="ELECTIVE122" draggable="true" ondragstart="drag(event)" id="ELECTIVE122">ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="qa-container">
+                <div id="question-section">
+                    <textarea id="question" placeholder="Ask a question about the course map..."></textarea>
+                    <button onclick="askQuestion()" id="myButton">Get Requisite</button>
+                </div>
+                <div id="response" style="display:none;"></div>
+                <div id="newresponse" style="display:none;"></div>
+
+                <div id="dropdown-container" style="display: none;">
+                    <h3>Electives</h3>
+                    <div id="elective-section">
+                        <label for="categoryDropdown">Select an Elective Category:</label>
+                        <select id="categoryDropdown">
+                            <option value="">--- Select Category ---</option>
+                            <option value="CS3000">CS 3000 LEVEL ELECTIVE</option>
+                            <option value="CS4000">CS 4000 LEVEL ELECTIVE</option>
+                            <option value="MATH">Math Elective (After 1280)</option>
+                        </select>
+                
+                        <div id="courseDropdownContainer" style="display: none; margin-top: 1rem;">
+                            <label for="courseDropdown">Select a Course:</label>
+                            <select id="courseDropdown">
+                                <option value="">--- Select Course ---</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="reset-container">
+            <button id="reset-btn" onclick="resetCourses()">Reset</button>
+        </div>
+    </div>
+
+    <!-- SE Program (initially hidden) -->
+    <div id="SE-program" class="program-container" style="display: none;">
+        <h2>BS in SE Course Map Exploration</h2>
+        <div id="legend_container">
+            <ul>
+                <li class="prereq">Course prerequisite chain</li>
+                <li class="prereq immediate">Immediate prerequisite</li>
+                <li class="prereq immediate coreq">Credit or current registration required</li>
+                <li class="coreq">Immediate Postrequisite</li>
+                <li class="postreq">Postrequisite course sequence</li>
+            </ul>
+        </div>
+        <div class="table-and-question-container">
+            <div class="table_container">
+                <table id="courseTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Year 1</th>
+                            <th colspan="2">Year 2</th>
+                            <th colspan="2">Year 3</th>
+                            <th colspan="2">Year 4</th>
+                        </tr>
+                        <tr>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                        </tr>
+                        <tr>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2010" draggable="true" ondragstart="drag(event)" id="CS2010">CS 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2900" draggable="true" ondragstart="drag(event)" id="CS2900">CS 2900<br>(2 Cr.)</div>
+                                    <div class="item course" data-id="MATH1280" draggable="true" ondragstart="drag(event)" id="MATH1280">MATH 1280<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1010 & 1110" draggable="true" ondragstart="drag(event)" id="WRIT1010 & 1110">WRIT 1010 & 1110<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2020" draggable="true" ondragstart="drag(event)" id="CS2020">CS 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2190" draggable="true" ondragstart="drag(event)" id="CS2190">CS 2190<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2220" draggable="true" ondragstart="drag(event)" id="MATH2220">MATH 2220<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="FREN1010" draggable="true" ondragstart="drag(event)" id="FREN1010">LANG 1010<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1120" draggable="true" ondragstart="drag(event)" id="WRIT1120">WRIT 1120<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3350" draggable="true" ondragstart="drag(event)" id="CS3350">CS 3350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3080" draggable="true" ondragstart="drag(event)" id="CS3080">CS 3080<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL1" draggable="true" ondragstart="drag(event)" id="NSL1">NS1 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="FREN1020" draggable="true" ondragstart="drag(event)" id="FREN1020">LANG 1020<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3210" draggable="true" ondragstart="drag(event)" id="CS3210">CS 3210<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SE3540" draggable="true" ondragstart="drag(event)" id="SE3540">SE 3540<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL2" draggable="true" ondragstart="drag(event)" id="NSL2">NS2 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="FREN2010" draggable="true" ondragstart="drag(event)" id="FREN2010">LANG 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC1"draggable="true" ondragstart="drag(event)" id="MDC1">MDC Elective<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4620" draggable="true" ondragstart="drag(event)" id="CS4620">CS 4620<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3000" draggable="true" ondragstart="drag(event)" id="CS3000">CS 3000<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1340" draggable="true" ondragstart="drag(event)" id="MATH1340">MATH 1340<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="FREN2020" draggable="true" ondragstart="drag(event)" id="FREN2020">LANG 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC2" draggable="true" ondragstart="drag(event)" id="MDC2">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4390" draggable="true" ondragstart="drag(event)" id="CS4390">CS 4390<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3900" draggable="true" ondragstart="drag(event)" id="CS3900">CS 3900<br>SUMMER<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1350" draggable="true" ondragstart="drag(event)" id="MATH1350">MATH 1350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SE4550" draggable="true" ondragstart="drag(event)" id="SE4550">SE 4550<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC3" draggable="true" ondragstart="drag(event)" id="MDC3">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL1" draggable="true" ondragstart="drag(event)" id="SOCIAL1">SOC/BEH.SCI ELECTIVE<br>(3 Cr.)</div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3000/4000-1" draggable="true" ondragstart="drag(event)" id="CS3000/4000-1">CS 3/4000<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SE4560" draggable="true" ondragstart="drag(event)" id="SE4560">SE 4560<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2470" draggable="true" ondragstart="drag(event)" id="MATH2470">MATH 2470<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH/SCI1" draggable="true" ondragstart="drag(event)" id="MATH/SCI1">MATH/SCI Elective<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC4" draggable="true" ondragstart="drag(event)" id="MDC4">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL2" draggable="true" ondragstart="drag(event)" id="SOCIAL2">SOC/BEH.SCI ELECTIVE<br>(3 Cr.)</div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="SE4770" draggable="true" ondragstart="drag(event)" id="SE4770">SE 4770 Capstone<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3000/4000-2" draggable="true" ondragstart="drag(event)" id="CS3000/4000-2">CS 3/4000<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3000/4000-3" draggable="true" ondragstart="drag(event)" id="CS3000/4000-3">CS 3/4000<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH/SCI2" draggable="true" ondragstart="drag(event)" id="MATH/SCI2">MATH/SCI Elective<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH" draggable="true" ondragstart="drag(event)" id="MATH">MATH ELECTIVE (AFTER1280)<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="qa-container">
+                <div id="question-section">
+                    <textarea id="question" placeholder="Ask a question about the course map..."></textarea>
+                    <button onclick="askQuestion()" id="myButton">Get Requisite</button>
+                </div>
+                <div id="response" style="display:none;"></div>
+                <div id="newresponse" style="display:none;"></div>
+
+                <div id="dropdown-container" style="display: none;">
+                    <h3>Electives</h3>
+                    <div id="elective-section">
+                        <label for="categoryDropdown">Select an Elective Category:</label>
+                        <select id="categoryDropdown">
+                            <option value="">--- Select Category ---</option>
+                            <option value="CS3000/4000">CS 3000/4000 ELECTIVE</option>
+                            <option value="MATH/SCI">MATH/SCI ELECTIVE</option>
+                            <option value="MATH">Math Elective (After 1280)</option>
+                        </select>
+                
+                        <div id="courseDropdownContainer" style="display: none; margin-top: 1rem;">
+                            <label for="courseDropdown">Select a Course:</label>
+                            <select id="courseDropdown">
+                                <option value="">--- Select Course ---</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="reset-container">
+            <button id="reset-btn" onclick="resetCourses()">Reset</button>
+        </div>
+    </div>
+    <!-- CDS Program (initially hidden) -->
+    <div id="CDS-program" class="program-container" style="display: none;">
+        <h2>BS in CS Specialization in Computational Data Science Course Map Exploration</h2>
+        <div id="legend_container">
+            <ul>
+                <li class="prereq">Course prerequisite chain</li>
+                <li class="prereq immediate">Immediate prerequisite</li>
+                <li class="prereq immediate coreq">Credit or current registration required</li>
+                <li class="coreq">Immediate Postrequisite</li>
+                <li class="postreq">Postrequisite course sequence</li>
+            </ul>
+        </div>
+        <div class="table-and-question-container">
+            <div class="table_container">
+                <table id="courseTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Year 1</th>
+                            <th colspan="2">Year 2</th>
+                            <th colspan="2">Year 3</th>
+                            <th colspan="2">Year 4</th>
+                        </tr>
+                        <tr>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                        </tr>
+                        <tr>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 100px; border: 1px solid #ccc;">
+                                    <div class="item course" data-id="CS2010" draggable="true" ondragstart="drag(event)" id="CS2010">CS 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2900" draggable="true" ondragstart="drag(event)" id="CS2900">CS 2900<br>(2 Cr.)</div>
+                                    <div class="item course" data-id="MATH1280" draggable="true" ondragstart="drag(event)" id="MATH1280">MATH 1280<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1010 & 1110" draggable="true" ondragstart="drag(event)" id="WRIT1010 & 1110">WRIT 1010 & 1110<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 100px; border: 1px solid #ccc;">
+                                    <div class="item course" data-id="CS2020" draggable="true" ondragstart="drag(event)" id="CS2020">CS 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2190" draggable="true" ondragstart="drag(event)" id="CS2190">CS 2190<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2220" draggable="true" ondragstart="drag(event)" id="MATH2220">MATH 2220<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="ASL1010" draggable="true" ondragstart="drag(event)" id="ASL1010">LANG 1010<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1120" draggable="true" ondragstart="drag(event)" id="WRIT1120">WRIT 1120<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 100px; border: 1px solid #ccc;">
+                                    <div class="item course" data-id="CS3350" draggable="true" ondragstart="drag(event)" id="CS3350">CS 3350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3080" draggable="true" ondragstart="drag(event)" id="CS3080">CS 3080<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1340" draggable="true" ondragstart="drag(event)" id="MATH1340">MATH 1340<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="ASL1020" draggable="true" ondragstart="drag(event)" id="ASL1020">LANG 1020<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="NSL1" draggable="true" ondragstart="drag(event)" id="NSL1">NS1 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td  ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 100px; border: 1px solid #ccc;">
+                                    <div class="item course" data-id="CS3060" draggable="true" ondragstart="drag(event)" id="CS3060">CS 3060<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3540" draggable="true" ondragstart="drag(event)" id="CS3540">CS 3540<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1350" draggable="true" ondragstart="drag(event)" id="MATH1350">MATH 1350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="ASL2010" draggable="true" ondragstart="drag(event)" id="ASL2010">LANG 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL2" draggable="true" ondragstart="drag(event)" id="NSL2">NS2 LAB<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 100px; border: 1px solid #ccc;">
+                                    <div class="item course" data-id="CS4120" draggable="true" ondragstart="drag(event)" id="CS4120">CS 4120<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3000" draggable="true" ondragstart="drag(event)" id="CS3000">CS 3000<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2320" draggable="true" ondragstart="drag(event)" id="MATH2320">MATH 2320<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="ASL2020" draggable="true" ondragstart="drag(event)" id="ASL2020">LANG 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2470" draggable="true" ondragstart="drag(event)" id="MATH2470">MATH 2470<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 100px; border: 1px solid #ccc;">
+                                    <div class="item course" data-id="CS4170" draggable="true" ondragstart="drag(event)" id="CS4170">CS 4170<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3900" draggable="true" ondragstart="drag(event)" id="CS3900">CS 3900<br>SUMMER<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3200" draggable="true" ondragstart="drag(event)" id="CS3200">CS 3200<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH3320" draggable="true" ondragstart="drag(event)" id="MATH3320">MATH 3320<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL1" draggable="true" ondragstart="drag(event)" id="SOCIAL1">SOC/BEH.SCI Ele<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC1" draggable="true" ondragstart="drag(event)" id="MDC1">MDC ELECTIVE<br>(3 Cr.)</div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 100px; border: 1px solid #ccc;">
+                                    <div class="item course" data-id="CS4620" draggable="true" ondragstart="drag(event)" id="CS4620">CS 4620<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4630" draggable="true" ondragstart="drag(event)" id="CS4630">CS 4630<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL2" draggable="true" ondragstart="drag(event)" id="SOCIAL2">SOC/BEH.SCI Ele<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC2" draggable="true" ondragstart="drag(event)" id="MDC2">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC3" draggable="true" ondragstart="drag(event)" id="MDC3">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 100px; border: 1px solid #ccc;">
+                                    <div class="item course" data-id="CS4770 OR SE4770" draggable="true" ondragstart="drag(event)" id="CS4770 OR SE4770">CS/SE4770 Capstone<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CDS" draggable="true" ondragstart="drag(event)" id="CDS">CDS ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="ELECTIVE122" draggable="true" ondragstart="drag(event)" id="ELECTIVE122">ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="BGP" draggable="true" ondragstart="drag(event)" id="BGP">BGP ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC4" draggable="true" ondragstart="drag(event)" id="MDC4">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="qa-container">
+                <div id="question-section">
+                    <textarea id="question" placeholder="Ask a question about the course map..."></textarea>
+                    <button onclick="askQuestion()" id="myButton">Get Requisite</button>
+                </div>
+                <div id="response" style="display:none;"></div>
+                <div id="newresponse" style="display:none;"></div>
+    
+                <div id="dropdown-container" style="display: none;">
+                    <h3>Electives</h3>
+                    <div id="elective-section">
+                        <label for="categoryDropdown">Select an Elective Category:</label>
+                        <select id="categoryDropdown">
+                            <option value="">--- Select Category ---</option>
+                            <option value="ELE">ELECTIVE</option>
+                            <option value="CDS">CDS ELECTIVE</option>
+                        </select>
+                
+                        <div id="courseDropdownContainer" style="display: none; margin-top: 1rem;">
+                            <label for="courseDropdown">Select a Course:</label>
+                            <select id="courseDropdown">
+                                <option value="">--- Select Course ---</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="reset-container">
+            <button id="reset-btn" onclick="resetCourses()">Reset</button>
+        </div>
+    </div>
+
+
+    <!-- BA Program (hidden) -->
+    <div id="BA-program" class="program-container" style="display: none;">
+        <h2>BA in CS Course Map Exploration</h2>
+        <div id="legend_container">
+            <ul>
+                <li class="prereq">Course prerequisite chain</li>
+                <li class="prereq immediate">Immediate prerequisite</li>
+                <li class="prereq immediate coreq">Credit or current registration required</li>
+                <li class="coreq">Immediate postrequisite </li>
+                <li class="postreq">Postrequisite course sequence</li>
+            </ul>
+        </div>
+        <div class="table-and-question-container">
+            <div class="table_container">
+                <table id="courseTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Year 1</th>
+                            <th colspan="2">Year 2</th>
+                            <th colspan="2">Year 3</th>
+                            <th colspan="2">Year 4</th>
+                        </tr>
+                        <tr>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                        </tr>
+                        <tr>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2010" draggable="true" ondragstart="drag(event)" id="CS2010">CS 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1280" draggable="true" ondragstart="drag(event)" id="MATH1280">MATH 1280<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1010 & 1110" draggable="true" ondragstart="drag(event)" id="WRIT1010 & 1110">WRIT 1010 & 1110<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="Minor1" draggable="true" ondragstart="drag(event)" id="Minor1">MINOR 1<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2020" draggable="true" ondragstart="drag(event)" id="CS2020">CS 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2190" draggable="true" ondragstart="drag(event)" id="CS2190">CS 2190<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2220" draggable="true" ondragstart="drag(event)" id="MATH2220">MATH 2220<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="GERM1010" draggable="true" ondragstart="drag(event)" id="GERM1010">LANG 1010<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1120" draggable="true" ondragstart="drag(event)" id="WRIT1120">WRIT 1120<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3350" draggable="true" ondragstart="drag(event)" id="CS3350">CS 3350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3080" draggable="true" ondragstart="drag(event)" id="CS3080">CS 3080<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL1" draggable="true" ondragstart="drag(event)" id="NSL1">NS1 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="GERM1020" draggable="true" ondragstart="drag(event)" id="GERM1020">LANG 1020<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="Minor2" draggable="true" ondragstart="drag(event)" id="Minor2">MINOR 2<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3060" draggable="true" ondragstart="drag(event)" id="CS3060">CS 3060<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3540" draggable="true" ondragstart="drag(event)" id="CS3540">CS 3540<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL2" draggable="true" ondragstart="drag(event)" id="NSL2">NS2 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="GERM2010" draggable="true" ondragstart="drag(event)" id="GERM2010">LANG 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC1"draggable="true" ondragstart="drag(event)" id="MDC1">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3000" draggable="true" ondragstart="drag(event)" id="CS3000">CS 3000<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1340" draggable="true" ondragstart="drag(event)" id="MATH1340">MATH 1340<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="GERM2020" draggable="true" ondragstart="drag(event)" id="GERM2020">LANG 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC2" draggable="true" ondragstart="drag(event)" id="MDC2">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="Minor3" draggable="true" ondragstart="drag(event)" id="Minor3">MINOR 2<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4390" draggable="true" ondragstart="drag(event)" id="CS4390">CS 4390<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1350" draggable="true" ondragstart="drag(event)" id="MATH1350">MATH 1350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4000-1" draggable="true" ondragstart="drag(event)" id="CS4000-1">CS 4000-Lv.<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC3" draggable="true" ondragstart="drag(event)" id="MDC3">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL1" draggable="true" ondragstart="drag(event)" id="SOCIAL1">SOC/BEH.SCI<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4000-2" draggable="true" ondragstart="drag(event)" id="CS4000-2">CS 4000-Lv.<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2470" draggable="true" ondragstart="drag(event)" id="MATH2470">MATH 2470<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL2" draggable="true" ondragstart="drag(event)" id="SOCIAL2">SOC/BEH.SCI<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC4" draggable="true" ondragstart="drag(event)" id="MDC4">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="Minor4" draggable="true" ondragstart="drag(event)" id="Minor4">MINOR 4<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4770 OR SE4770" draggable="true" ondragstart="drag(event)" id="CS4770 OR SE4770">CS/SE 4770<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4000-3" draggable="true" ondragstart="drag(event)" id="CS4000-3">CS 4000-Lv.<br>ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="Minor5" draggable="true" ondragstart="drag(event)" id="Minor5">MINOR 5<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="Minor6" draggable="true" ondragstart="drag(event)" id="Minor6">MINOR 6<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="Minor7" draggable="true" ondragstart="drag(event)" id="Minor7">MINOR 7<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="BGP/ELECTIVE" draggable="true" ondragstart="drag(event)" id="BGP/ELECTIVE">BGP/ELECTIVE<br>(3 Cr.)</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="qa-container">
+                <div id="question-section">
+                    <textarea id="question" placeholder="Ask a question about the course map..."></textarea>
+                    <button onclick="askQuestion()" id="myButton">Get Requisite</button>
+                </div>
+                <div id="response" style="display:none;"></div>
+                <div id="newresponse" style="display:none;"></div>
+
+                <div id="dropdown-container" style="display: none;">
+                    <h3>Electives</h3>
+                    <div id="elective-section">
+                        <label for="categoryDropdown">Select an Elective Category:</label>
+                        <select id="categoryDropdown">
+                            <option value="">--- Select Category ---</option>
+                            <option value="CS4000">CS 4000 LEVEL ELECTIVE</option>
+                        </select>
+                
+                        <div id="courseDropdownContainer" style="display: none; margin-top: 1rem;">
+                            <label for="courseDropdown">Select a Course:</label>
+                            <select id="courseDropdown">
+                                <option value="">--- Select Course ---</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="reset-container">
+            <button id="reset-btn" onclick="resetCourses()">Reset</button>
+        </div>
+    </div>
+
+    <!-- BS IN CYBER Program (initially hidden) -->
+    <div id="BSCS-program" class="program-container" style="display: none;">
+        <h2>BS in CS Specialization in Cyber Security Course Map Exploration</h2>
+        <div id="legend_container">
+            <ul>
+                <li class="prereq">Course prerequisite chain</li>
+                <li class="prereq immediate">Immediate prerequisite</li>
+                <li class="prereq immediate coreq">Credit or current registration required</li>
+                <li class="coreq">Immediate Postrequisite</li>
+                <li class="postreq">Postrequisite course sequence</li>
+            </ul>
+        </div>
+        <div class="table-and-question-container">
+            <div class="table_container">
+                <table id="courseTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Year 1</th>
+                            <th colspan="2">Year 2</th>
+                            <th colspan="2">Year 3</th>
+                            <th colspan="2">Year 4</th>
+                        </tr>
+                        <tr>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                        </tr>
+                        <tr>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                            <th>0 Cr.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2010" draggable="true" ondragstart="drag(event)" id="CS2010">CS 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2900" draggable="true" ondragstart="drag(event)" id="CS2900">CS 2900<br>(2 Cr.)</div>
+                                    <div class="item course" data-id="MATH1280" draggable="true" ondragstart="drag(event)" id="MATH1280">MATH 1280<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1010 & 1110" draggable="true" ondragstart="drag(event)" id="WRIT1010 & 1110">WRIT 1010 & 1110<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2020" draggable="true" ondragstart="drag(event)" id="CS2020">CS 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2190" draggable="true" ondragstart="drag(event)" id="CS2190">CS 2190<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2220" draggable="true" ondragstart="drag(event)" id="MATH2220">MATH 2220<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CHIN1010" draggable="true" ondragstart="drag(event)" id="CHIN1010">LANG 1010<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1120" draggable="true" ondragstart="drag(event)" id="WRIT1120">WRIT 1120<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3350" draggable="true" ondragstart="drag(event)" id="CS3350">CS 3350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS1310" draggable="true" ondragstart="drag(event)" id="CS1310">CS 1310<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1340" draggable="true" ondragstart="drag(event)" id="MATH1340">MATH 1340<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL1" draggable="true" ondragstart="drag(event)" id="NSL1">NS1 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="CHIN1020" draggable="true" ondragstart="drag(event)" id="CHIN1020">LANG 1020<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3540" draggable="true" ondragstart="drag(event)" id="CS3540">CS 3540<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2310" draggable="true" ondragstart="drag(event)" id="CS2310">CS 2310<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1350" draggable="true" ondragstart="drag(event)" id="MATH1350">MATH 1350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL2" draggable="true" ondragstart="drag(event)" id="NSL2">NS2 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="CHIN2010" draggable="true" ondragstart="drag(event)" id="CHIN2010">LANG 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3060" draggable="true" ondragstart="drag(event)" id="CS3060">CS 3060<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3080" draggable="true" ondragstart="drag(event)" id="CS3080">CS 3080<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3210" draggable="true" ondragstart="drag(event)" id="CS3210">CS 3210<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2470" draggable="true" ondragstart="drag(event)" id="MATH2470">MATH 2470<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CHIN2020" draggable="true" ondragstart="drag(event)" id="CHIN2020">LANG 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4390" draggable="true" ondragstart="drag(event)" id="CS4390">CS 4390<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3900" draggable="true" ondragstart="drag(event)" id="CS3900">CS 3900<br>SUMMER<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4310" draggable="true" ondragstart="drag(event)" id="CS4310">CS 4310<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH" draggable="true" ondragstart="drag(event)" id="MATH">MATH ELECTIVES<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC1" draggable="true" ondragstart="drag(event)" id="MDC1">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL1" draggable="true" ondragstart="drag(event)" id="SOCIAL1">SOC/BEH.SCI ELECTIVE<br>(3 Cr.)</div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4120" draggable="true" ondragstart="drag(event)" id="CS4120">CS 4120<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3000" draggable="true" ondragstart="drag(event)" id="CS3000">CS 3000<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC2" draggable="true" ondragstart="drag(event)" id="MDC2">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL2" draggable="true" ondragstart="drag(event)" id="SOCIAL2">SOC/BEH.SCI ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4770" draggable="true" ondragstart="drag(event)" id="CS4770">CS 4770 Capstone<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4320" draggable="true" ondragstart="drag(event)" id="CS4320">CS 4320<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH/SCI" draggable="true" ondragstart="drag(event)" id="MATH/SCI">MATH/SCI Elective<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC3" draggable="true" ondragstart="drag(event)" id="MDC3">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC4" draggable="true" ondragstart="drag(event)" id="MDC4">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="qa-container">
+                <div id="question-section">
+                    <textarea id="question" placeholder="Ask a question about the course map..."></textarea>
+                    <button onclick="askQuestion()" id="myButton">Get Requisite</button>
+                </div>
+                <div id="response" style="display:none;"></div>
+                <div id="newresponse" style="display:none;"></div>
+
+                <div id="dropdown-container" style="display: none;">
+                    <h3>Electives</h3>
+                    <div id="elective-section">
+                        <label for="categoryDropdown">Select an Elective Category:</label>
+                        <select id="categoryDropdown" onchange="categorySelected()">
+                            <option value="">--- Select Category ---</option>
+                            <option value="MATH/SCI">MATH/SCI ELECTIVE</option>
+                        </select>
+                
+                        <div id="courseDropdownContainer" style="display: none; margin-top: 1rem;">
+                            <label for="courseDropdown">Select a Course:</label>
+                            <select id="courseDropdown" onchange="courseSelected()">
+                                <option value="">--- Select Course ---</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="reset-container">
+            <button id="reset-btn" onclick="resetCourses()">Reset</button>
+        </div>
+    </div>
+
+    <!-- BA IN CYBER Program (initially hidden) -->
+    <div id="BACS-program" class="program-container" style="display: none;">
+        <h2>BA in CS Specialization in Cyber Security Course Map Exploration</h2>
+        <div id="legend_container">
+            <ul>
+                <li class="prereq">Course prerequisite chain</li>
+                <li class="prereq immediate">Immediate prerequisite</li>
+                <li class="prereq immediate coreq">Credit or current registration required</li>
+                <li class="coreq">Immediate Postrequisite</li>
+                <li class="postreq">Postrequisite course sequence</li>
+            </ul>
+        </div>
+        <div class="table-and-question-container">
+            <div class="table_container">
+                <table id="courseTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Year 1</th>
+                            <th colspan="2">Year 2</th>
+                            <th colspan="2">Year 3</th>
+                            <th colspan="2">Year 4</th>
+                        </tr>
+                        <tr>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                            <th>Fall</th>
+                            <th>Spring</th>
+                        </tr>
+                        <tr>
+                            <th>15 Cr.</th>
+                            <th>16 Cr.</th>
+                            <th>14 Cr.</th>
+                            <th>Cr.</th>
+                            <th>Cr.</th>
+                            <th>Cr.</th>
+                            <th>Cr.</th>
+                            <th>Cr.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2010" draggable="true" ondragstart="drag(event)" id="CS2010">CS 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1280" draggable="true" ondragstart="drag(event)" id="MATH1280">MATH 1280<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1010 & 1110" draggable="true" ondragstart="drag(event)" id="WRIT1010 & 1110">WRIT 1010 & 1110<br>(5 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS2020" draggable="true" ondragstart="drag(event)" id="CS2020">CS 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2190" draggable="true" ondragstart="drag(event)" id="CS2190">CS 2190<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2220" draggable="true" ondragstart="drag(event)" id="MATH2220">MATH 2220<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="ARAB1010" draggable="true" ondragstart="drag(event)" id="ARAB1010">LANG 1010<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="WRIT1120" draggable="true" ondragstart="drag(event)" id="WRIT1120">WRIT 1120<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3350" draggable="true" ondragstart="drag(event)" id="CS3350">CS 3350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS1310" draggable="true" ondragstart="drag(event)" id="CS1310">CS 1310<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1340" draggable="true" ondragstart="drag(event)" id="MATH1340">MATH 1340<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL1" draggable="true" ondragstart="drag(event)" id="NSL1">NS1 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="ARAB1020" draggable="true" ondragstart="drag(event)" id="ARAB1020">LANG 1020<br>(4 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3540" draggable="true" ondragstart="drag(event)" id="CS3540">CS 3540<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS2310" draggable="true" ondragstart="drag(event)" id="CS2310">CS 2310<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH1350" draggable="true" ondragstart="drag(event)" id="MATH1350">MATH 1350<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="NSL2" draggable="true" ondragstart="drag(event)" id="NSL2">NS2 LAB<br>(4-5 Cr.)</div>
+                                    <div class="item course" data-id="ARAB2010" draggable="true" ondragstart="drag(event)" id="ARAB2010">LANG 2010<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3060" draggable="true" ondragstart="drag(event)" id="CS3060">CS 3060<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3080" draggable="true" ondragstart="drag(event)" id="CS3080">CS 3080<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS3210" draggable="true" ondragstart="drag(event)" id="CS3210">CS 3210<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH2470" draggable="true" ondragstart="drag(event)" id="MATH2470">MATH 2470<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="ARAB2020" draggable="true" ondragstart="drag(event)" id="ARAB2020">LANG 2020<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4390" draggable="true" ondragstart="drag(event)" id="CS4390">CS 4390<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4310" draggable="true" ondragstart="drag(event)" id="CS4310">CS 4310<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC1" draggable="true" ondragstart="drag(event)" id="MDC1">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL1" draggable="true" ondragstart="drag(event)" id="SOCIAL1">SOC/BEH.SCI ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS3000" draggable="true" ondragstart="drag(event)" id="CS3000">CS 3000<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MATH" draggable="true" ondragstart="drag(event)" id="MATH">MATH/SCI ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC2" draggable="true" ondragstart="drag(event)" id="MDC2">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="SOCIAL2" draggable="true" ondragstart="drag(event)" id="SOCIAL2">SOC/BEH.SCI ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                            <td ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div class="course-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="item course" data-id="CS4770 OR SE4770" draggable="true" ondragstart="drag(event)" id="CS4770 OR SE4770">CS/SE 4770 Capstone<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="CS4320" draggable="true" ondragstart="drag(event)" id="CS4320">CS 4320<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC3" draggable="true" ondragstart="drag(event)" id="MDC3">MDC Elective<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="MDC4" draggable="true" ondragstart="drag(event)" id="MDC4">MDC ELECTIVE<br>(3 Cr.)</div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                    <div class="item course" data-id="" draggable="true" ondragstart="drag(event)" id=""></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="qa-container">
+                <div id="question-section">
+                    <textarea id="question" placeholder="Ask a question about the course map..."></textarea>
+                    <button onclick="askQuestion()" id="myButton">Get Requisite</button>
+                </div>
+                <div id="response" style="display:none;"></div>
+                <div id="newresponse" style="display:none;"></div>
+
+                <div id="dropdown-container" style="display: none;">
+                    <h3>Electives</h3>
+                    <div id="elective-section">
+                        <label for="categoryDropdown">Select an Elective Category:</label>
+                        <select id="categoryDropdown" onchange="categorySelected()">
+                            <option value="">--- Select Category ---</option>
+                            <option value="MATH/SCI">MATH/SCI Elective</option>
+                        </select>
+                
+                        <div id="courseDropdownContainer" style="display: none; margin-top: 1rem;">
+                            <label for="courseDropdown">Select a Course:</label>
+                            <select id="courseDropdown" onchange="courseSelected()">
+                                <option value="">--- Select Course ---</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="reset-container">
+            <button id="reset-btn" onclick="resetCourses()">Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function switchProgram() {
+            const program = document.getElementById('program-dropdown').value;
+            document.getElementById('CS-program').style.display = program === 'CS' ? 'block' : 'none';
+            document.getElementById('SE-program').style.display = program === 'SE' ? 'block' : 'none';
+            document.getElementById('CDS-program').style.display = program === 'CDS' ? 'block' : 'none';
+            document.getElementById('BA-program').style.display = program === 'BA' ? 'block' : 'none';
+            document.getElementById('BSCS-program').style.display = program === 'BSCS' ? 'block' : 'none';
+            document.getElementById('BACS-program').style.display = program === 'BACS' ? 'block' : 'none';
+
+            setupDragAndDrop();
+        }
+    </script>
+</body>
+</html>
