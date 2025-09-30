@@ -471,8 +471,12 @@ async function loadAllCourseData() {
         const jsonData = await response.json();
         jsonData.forEach(course => {
             if (course.subject) {
-                const coursePrefix = course.subject.split("-")[0].trim().replace(/\s+/g, "").toUpperCase();
-                window.courseData[coursePrefix] = {
+                // Handle cross-listed courses (e.g., "CS 4770 OR SE 4770")
+                const courseNames = course.subject.split(/\s+OR\s+/i).map(name => 
+                    name.split(/[-&]/)[0].trim().replace(/\s+/g, "").toUpperCase()
+                );
+                
+                const courseData = {
                     prerequisites: course.prerequisites 
                         ? course.prerequisites.replace(/["']/g, "").split(/\s*,\s*/).map(pr => pr.trim().replace(/\s+/g, "").toUpperCase())
                         : [],
@@ -481,6 +485,13 @@ async function loadAllCourseData() {
                         : [],
                     credits: parseInt(course.credits) || 0
                 };
+                
+                // Store the same data under all course names
+                courseNames.forEach(courseName => {
+                    if (courseName) {
+                        window.courseData[courseName] = courseData;
+                    }
+                });
             }
         });
     } catch (error) {

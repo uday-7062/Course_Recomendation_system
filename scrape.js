@@ -35,7 +35,11 @@ async function processCourses() {
   const results = [];
 
   for (const record of data) {
-    if (record.Subject && record.Link) {
+    // Filter out junk rows - only process valid course records
+    if (record.Subject && record.Link && 
+        record.Subject.match(/^[A-Z]{2,4} \d{3,4}/) && // Valid course format
+        record.Link.includes('catalog.bgsu.edu')) { // Valid BGSU link
+      
       console.log(`Fetching data for: ${record.Subject}`);
       const details = await scrapeCourseDetails(record.Link);
       results.push({
@@ -43,10 +47,7 @@ async function processCourses() {
         prerequisites: details.prerequisites || "None"
       });
     } else {
-      results.push({
-        subject: record.Subject || "Unknown",
-        prerequisites: "None"
-      });
+      console.log(`Skipping invalid record: ${record.Subject || 'No subject'}`);
     }
   }
 
